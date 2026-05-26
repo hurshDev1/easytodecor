@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details — EasytoDecor</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --navy: #162144;
+      --navy-deep: #0d1730;
+      --navy-mid: #1e2e5a;
+      --white: #ffffff;
+      --gold: #C9A84C;
+      --gold-light: #E8C97A;
+      --gold-pale: #f7f0dc;
+      --gold-dark: #9a7a2e;
+      --gray-soft: #f5f5f2;
+      --gray-mid: #ebebeb;
+      --text-muted: #8a8a8a;
+      --text-body: #3a3a3a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--navy);
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.18);
+      padding: 0 1.4rem;
+      height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      gap: 2px;
+      text-decoration: none;
+    }
+
+    .nav-logo .brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-logo .sub {
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.4rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--navy);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-links .nav-wa {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 0.42rem 0.9rem;
+      border-radius: 2px;
+    }
+
+    .nav-links .nav-wa:hover {
+      background: var(--gold-light);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-deep);
+      padding: 3.5rem 1.4rem 2rem;
+      color: rgba(255, 255, 255, 0.4);
+      border-top: 1px solid rgba(201, 168, 76, 0.1);
+      margin-top: auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .footer-full {
+      grid-column: 1/-1;
+    }
+
+    .footer-brand .brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .footer-brand .sub {
+      font-size: 0.58rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+
+    .footer-brand p {
+      font-size: 0.78rem;
+      margin-top: 0.8rem;
+      line-height: 1.7;
+      max-width: 260px;
+    }
+
+    .footer-links h4 {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.9rem;
+      font-weight: 500;
+    }
+
+    .footer-links a {
+      display: block;
+      color: rgba(255, 255, 255, 0.38);
+      text-decoration: none;
+      font-size: 0.78rem;
+      margin-bottom: 0.5rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      font-size: 0.68rem;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .footer-bottom a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .footer-wa-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .footer-wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #25D366;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.6rem 1.1rem;
+      border-radius: 3px;
+      transition: opacity 0.2s;
+    }
+
+    .footer-wa-btn:hover {
+      opacity: 0.88;
+    }
+
+    .footer-wa-btn svg {
+      width: 15px;
+      height: 15px;
+      fill: white;
+    }
+
+    .footer-wa-label {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    /* ── WA FLOAT ── */
+    .wa-float {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 300;
+      width: 52px;
+      height: 52px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .wa-float:hover {
+      transform: scale(1.09);
+    }
+
+    .wa-float svg {
+      width: 27px;
+      height: 27px;
+      fill: white;
+    }
+
+    /* ── PRODUCT DETAILS LAYOUT ── */
+    .product-page {
+      padding: 100px 1.4rem 5rem 1.4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    @media(min-width: 768px) {
+      .product-page {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .product-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .main-img-container {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--gray-soft);
+      position: relative;
+    }
+
+    .main-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: opacity 0.3s;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.8);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      z-index: 10;
+    }
+
+    .carousel-btn:hover {
+      background: var(--gold);
+      color: white;
+    }
+
+    .carousel-btn.prev {
+      left: 10px;
+    }
+
+    .carousel-btn.next {
+      right: 10px;
+    }
+
+    .carousel-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .thumb-grid {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      scrollbar-width: none;
+    }
+
+    .thumb-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    .thumb-grid img {
+      height: 80px;
+      aspect-ratio: 1;
+      object-fit: contain;
+      border-radius: 2px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+      opacity: 0.6;
+      background-color: var(--gray-soft);
+    }
+
+    .thumb-grid img:hover {
+      opacity: 1;
+    }
+
+    .thumb-grid img.active {
+      border-color: var(--gold);
+      opacity: 1;
+    }
+
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .breadcrumbs {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .breadcrumbs a {
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .breadcrumbs a:hover {
+      color: var(--gold);
+    }
+
+    .product-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--navy);
+    }
+
+    .product-tagline {
+      font-size: 0.9rem;
+      color: var(--text-body);
+      font-style: italic;
+    }
+
+    .product-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--gold-dark);
+    }
+
+    .action-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-buy-wa {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 3px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      flex: 1;
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .btn-buy-wa:hover {
+      background: #20b858;
+    }
+
+    .btn-buy-wa svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+    }
+
+    .section-title {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--navy);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      border-bottom: 1px solid var(--gray-mid);
+      padding-bottom: 0.4rem;
+    }
+
+    .product-desc {
+      font-size: 0.9rem;
+      color: var(--text-body);
+      line-height: 1.8;
+    }
+
+    .details-list {
+      list-style: none;
+    }
+
+    .details-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--gray-mid);
+      font-size: 0.85rem;
+    }
+
+    .details-list li .label {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .details-list li .value {
+      color: var(--navy);
+      font-weight: 500;
+      text-align: right;
+    }
+
+    .features-list {
+      list-style: none;
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-body);
+    }
+
+    .features-list li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: bold;
+    }
+
+    .care-instructions {
+      font-size: 0.85rem;
+      color: var(--text-body);
+      line-height: 1.6;
+      background: var(--gray-soft);
+      padding: 1rem;
+      border-left: 3px solid var(--gold);
+      border-radius: 0 3px 3px 0;
+    }
+
+    .error-msg {
+      padding: 100px 1.4rem;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <span class="brand">EasytoDecor</span>
+      <span class="sub">by Aastitva Architects</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#shop">Shop</a>
+      <a href="https://wa.me/919517100073?text=Hi%2C%20I%20want%20a%20custom%20order!" target="_blank"
+        class="nav-wa">Order Now</a>
+    </div>
+  </nav>
+
+  <!-- PRODUCT CONTENT -->
+  <main id="main-content">
+    <!-- Content injected by JS -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand footer-full">
+        <div class="brand">EasytoDecor</div>
+        <div class="sub">by Aastitva Architects</div>
+        <p>Handcrafted resin and leather goods — designed with the precision of architecture and the warmth of craft.
+        </p>
+        <div class="footer-wa-row">
+          <a class="footer-wa-btn" href="https://wa.me/919517100073?text=Hi!" target="_blank">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+            +91 95171 00073
+          </a>
+          <span class="footer-wa-label">Chat with us directly</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Shop</h4>
+        <a href="index.html#shop">Resin Collection</a>
+        <a href="index.html#shop">Leather Collection</a>
+        <a href="index.html#shop">All Products</a>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <a href="index.html#about">Our Story</a>
+        <a href="https://wa.me/919517100073" target="_blank">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 EasytoDecor · Presented by <a href="#">Aastitva Architects</a> · Handcrafted in India.</p>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/919517100073?text=Hi%2C%20I%20visited%20EasytoDecor!" target="_blank"
+    aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+    </svg>
+  </a>
+
+  <!-- Load products and JS logic -->
+  <script src="products.js"></script>
+  <script>
+    const WA = '919517100073';
+    const WA_SVG = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>`;
+
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    const productId = getQueryParam('id');
+    const mainContent = document.getElementById('main-content');
+
+    let currentImageIndex = 0;
+    let currentProduct = null;
+
+    function setMainImage(index) {
+      if (!currentProduct) return;
+      currentImageIndex = index;
+      document.getElementById('main-image').src = currentProduct.images[index];
+      document.querySelectorAll('.thumb-grid img').forEach((img, i) => {
+        img.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextImage() {
+      if (!currentProduct) return;
+      const newIndex = (currentImageIndex + 1) % currentProduct.images.length;
+      setMainImage(newIndex);
+    }
+
+    function prevImage() {
+      if (!currentProduct) return;
+      const newIndex = (currentImageIndex - 1 + currentProduct.images.length) % currentProduct.images.length;
+      setMainImage(newIndex);
+    }
+
+    window.setMainImage = setMainImage;
+    window.nextImage = nextImage;
+    window.prevImage = prevImage;
+
+    if (productId) {
+      currentProduct = getProductById(productId);
+
+      if (currentProduct) {
+        document.title = `${currentProduct.name} — EasytoDecor`;
+
+        const thumbsHtml = currentProduct.images.map((img, index) =>
+          `<img src="${img}" class="${index === 0 ? 'active' : ''}" onclick="setMainImage(${index})" alt="${currentProduct.name} thumbnail">`
+        ).join('');
+
+        const detailsHtml = currentProduct.details.map(d =>
+          `<li><span class="label">${d.label}</span><span class="value">${d.value}</span></li>`
+        ).join('');
+
+        const featuresHtml = currentProduct.features.map(f =>
+          `<li>${f}</li>`
+        ).join('');
+
+        const msg = currentProduct.whatsappMessage + `\n\nProduct: ${window.location.origin}/product.html?id=${currentProduct.id}`;
+        const waLink = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+
+        const hasMultipleImages = currentProduct.images.length > 1;
+
+        mainContent.innerHTML = `
+        <div class="product-page">
+          <div class="product-gallery">
+            <div class="main-img-container">
+              <img id="main-image" src="${currentProduct.images[0]}" alt="${currentProduct.name}">
+              ${hasMultipleImages ? `
+                <button class="carousel-btn prev" onclick="prevImage()"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+                <button class="carousel-btn next" onclick="nextImage()"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+              ` : ''}
+            </div>
+            ${hasMultipleImages ? `<div class="thumb-grid">${thumbsHtml}</div>` : ''}
+          </div>
+          
+          <div class="product-info">
+            <div class="breadcrumbs">
+              <a href="index.html">Home</a> / <a href="index.html#shop">${currentProduct.category}</a> / ${currentProduct.subcategory}
+            </div>
+            
+            <div>
+              <h1 class="product-title">${currentProduct.name}</h1>
+              <p class="product-tagline">${currentProduct.tagline}</p>
+            </div>
+            
+            <div class="product-price">${currentProduct.price}</div>
+            
+            <div class="action-row">
+              <a href="${waLink}" target="_blank" class="btn-buy-wa">
+                ${WA_SVG} Purchase on WhatsApp
+              </a>
+            </div>
+            
+            <div>
+              <h3 class="section-title">Description</h3>
+              <p class="product-desc">${currentProduct.description}</p>
+            </div>
+            
+            <div>
+              <h3 class="section-title">Specifications</h3>
+              <ul class="details-list">
+                ${detailsHtml}
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="section-title">Features</h3>
+              <ul class="features-list">
+                ${featuresHtml}
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="section-title">Care Instructions</h3>
+              <p class="care-instructions">${currentProduct.careInstructions}</p>
+            </div>
+          </div>
+        </div>
+      `;
+      } else {
+        mainContent.innerHTML = `<div class="error-msg">Product not found.<br><br><a href="index.html#shop" style="font-size: 1rem; color: var(--gold); text-decoration: none;">Return to Shop</a></div>`;
+      }
+    } else {
+      mainContent.innerHTML = `<div class="error-msg">No product selected.<br><br><a href="index.html#shop" style="font-size: 1rem; color: var(--gold); text-decoration: none;">Return to Shop</a></div>`;
+    }
+  </script>
+</body>
+
+</html>

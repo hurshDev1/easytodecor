@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EasytoDecor — by Aastitva Architects</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #162144;
+  --navy-deep: #0d1730;
+  --navy-mid: #1e2e5a;
+  --white: #ffffff;
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --gold-pale: #f7f0dc;
+  --gold-dark: #9a7a2e;
+  --gray-soft: #f5f5f2;
+  --gray-mid: #ebebeb;
+  --text-muted: #8a8a8a;
+  --text-body: #3a3a3a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--navy);overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.18);padding:0 1.4rem;height:62px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;flex-direction:column;line-height:1;gap:2px;}
+.nav-logo .brand{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--navy);letter-spacing:0.02em;}
+.nav-logo .sub{font-size:0.58rem;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;font-weight:500;}
+.nav-links{display:flex;gap:1.4rem;align-items:center;}
+.nav-links a{text-decoration:none;font-size:0.75rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--navy);font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-links .nav-wa{background:var(--gold);color:var(--navy)!important;padding:0.42rem 0.9rem;border-radius:2px;}
+.nav-links .nav-wa:hover{background:var(--gold-light);}
+
+/* ── HERO ── */
+.hero{min-height:100svh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,21,45,0.35) 0%,rgba(14,21,45,0.2) 40%,rgba(14,21,45,0.85) 100%);}
+.hero-content{position:relative;z-index:2;padding:0 1.4rem 3.5rem;}
+.hero-tag{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold-light);border:1px solid rgba(201,168,76,0.45);padding:0.38rem 0.9rem;border-radius:2px;margin-bottom:1.4rem;width:fit-content;}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);display:block;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,15vw,6rem);font-weight:300;color:var(--white);line-height:0.9;letter-spacing:-0.02em;margin-bottom:1.5rem;}
+.hero h1 em{color:var(--gold-light);font-style:italic;}
+.hero-sub{font-size:0.88rem;color:rgba(255,255,255,0.65);line-height:1.75;margin-bottom:2rem;max-width:300px;}
+.hero-actions{display:flex;gap:0.8rem;flex-wrap:wrap;}
+.btn-primary{display:inline-flex;align-items:center;gap:0.5rem;background:var(--gold);color:var(--navy);text-decoration:none;font-size:0.73rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.85rem 1.4rem;border-radius:2px;border:none;cursor:pointer;transition:background 0.2s;font-family:'DM Sans',sans-serif;}
+.btn-primary:hover{background:var(--gold-light);}
+.btn-ghost{display:inline-flex;align-items:center;gap:0.5rem;background:transparent;color:var(--white);text-decoration:none;font-size:0.73rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.85rem 1.4rem;border-radius:2px;border:1px solid rgba(255,255,255,0.35);cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-light);}
+.hero-scroll{position:absolute;bottom:1.8rem;right:1.4rem;z-index:2;display:flex;flex-direction:column;align-items:center;gap:0.4rem;}
+.hero-scroll span{font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);writing-mode:vertical-lr;}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(201,168,76,0.6),transparent);animation:scrollpulse 2s ease-in-out infinite;}
+@keyframes scrollpulse{0%,100%{opacity:0.4;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.15)}}
+
+/* ── MARQUEE ── */
+.marquee-strip{background:var(--gold);padding:0.65rem 0;overflow:hidden;white-space:nowrap;}
+.marquee-inner{display:inline-flex;animation:marquee 24s linear infinite;}
+.marquee-inner span{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--navy);font-weight:500;padding:0 1.8rem;}
+.marquee-inner .dot{color:rgba(22,33,68,0.35);padding:0;}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SHARED ── */
+.section-eyebrow{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:0.9rem;}
+.section-eyebrow-light{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(201,168,76,0.65);font-weight:500;margin-bottom:0.9rem;}
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* ── BRAND STORY ── */
+.brand-story{padding:5rem 1.4rem;background:var(--white);}
+.brand-story h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,10vw,3.8rem);font-weight:400;color:var(--navy);line-height:1.05;letter-spacing:-0.015em;margin-bottom:1.5rem;}
+.brand-story h2 em{font-style:italic;color:var(--gold);}
+.brand-story p{font-size:0.9rem;color:var(--text-body);line-height:1.85;margin-bottom:1rem;max-width:520px;}
+.presented-by{margin-top:2.5rem;padding:1.3rem 1.5rem;border-left:3px solid var(--gold);background:var(--gold-pale);border-radius:0 4px 4px 0;}
+.presented-by .pb-label{font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:0.3rem;font-weight:500;}
+.presented-by .pb-name{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--navy);}
+.presented-by .pb-desc{font-size:0.79rem;color:#666;margin-top:0.35rem;line-height:1.65;}
+
+/* ── STATS ── */
+.stats-band{background:var(--navy);padding:3rem 1.4rem;display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;}
+.stat-item{text-align:center;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--gold-light);line-height:1;letter-spacing:-0.02em;}
+.stat-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:0.4rem;}
+
+/* ── CATEGORY SHOWCASE ── */
+.cat-showcase{padding:5rem 1.4rem;background:var(--gray-soft);}
+.cat-showcase h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,9vw,3rem);font-weight:400;color:var(--navy);line-height:1.05;margin-bottom:2.5rem;}
+.cat-cards{display:grid;grid-template-columns:1fr;gap:1rem;}
+.cat-card{position:relative;height:220px;border-radius:4px;overflow:hidden;text-decoration:none;display:block;cursor:pointer;}
+.cat-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;}
+.cat-card:hover img{transform:scale(1.04);}
+.cat-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,21,45,0.88) 0%,rgba(14,21,45,0.1) 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.4rem;}
+.cat-card-label{font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.4rem;}
+.cat-card-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--white);line-height:1.05;margin-bottom:0.6rem;}
+.cat-card-items{font-size:0.72rem;color:rgba(255,255,255,0.55);}
+.cat-card-arrow{position:absolute;top:1.2rem;right:1.2rem;width:34px;height:34px;border:1px solid rgba(201,168,76,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.cat-card:hover .cat-card-arrow{background:var(--gold);border-color:var(--gold);}
+.cat-card-arrow svg{width:14px;height:14px;stroke:var(--gold-light);fill:none;stroke-width:2;transition:stroke 0.2s;}
+.cat-card:hover .cat-card-arrow svg{stroke:var(--navy);}
+
+/* ── IMAGE STRIP ── */
+.img-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;height:200px;}
+.img-strip img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* ── PROCESS ── */
+.process-section{padding:5rem 1.4rem;background:var(--white);}
+.process-section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,9vw,3rem);font-weight:400;line-height:1.05;color:var(--navy);margin-bottom:0.5rem;}
+.process-section .lead{font-size:0.88rem;color:var(--text-muted);line-height:1.75;margin-bottom:3rem;max-width:420px;}
+.process-steps{display:flex;flex-direction:column;gap:0;}
+.process-step{display:flex;gap:1.2rem;padding:1.6rem 0;border-bottom:1px solid var(--gray-mid);align-items:flex-start;}
+.process-step:last-child{border-bottom:none;}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1;min-width:52px;opacity:0.5;}
+.step-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:var(--navy);margin-bottom:0.35rem;}
+.step-desc{font-size:0.8rem;color:var(--text-body);line-height:1.75;}
+
+/* ── SHOP ── */
+.shop-section{background:var(--gray-soft);padding:5rem 1.4rem;}
+.shop-header{margin-bottom:2.5rem;}
+.shop-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,9vw,3rem);font-weight:400;color:var(--navy);line-height:1.05;margin-bottom:1.2rem;}
+.cat-tabs{display:flex;gap:0.5rem;flex-wrap:wrap;}
+.cat-tab{padding:0.52rem 1.15rem;border:1.5px solid var(--navy);border-radius:2px;font-size:0.7rem;letter-spacing:0.09em;text-transform:uppercase;font-weight:500;cursor:pointer;background:transparent;color:var(--navy);transition:all 0.2s;font-family:'DM Sans',sans-serif;}
+.cat-tab.active,.cat-tab:hover{background:var(--navy);color:var(--white);}
+
+/* ── PRODUCTS GRID — rendered by JS ── */
+.products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
+@media(min-width:600px){.products-grid{grid-template-columns:repeat(3,1fr);}}
+
+.product-card{background:var(--white);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;transition:transform 0.25s;position:relative;}
+.product-card:hover{transform:translateY(-4px);}
+.card-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:var(--gray-soft);}
+.card-cat-badge{position:absolute;top:0.6rem;left:0.6rem;font-size:0.53rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.22rem 0.55rem;border-radius:2px;font-weight:500;}
+.badge-resin{background:rgba(22,33,68,0.85);color:var(--gold-light);}
+.badge-leather{background:rgba(80,48,20,0.85);color:#f0d9b8;}
+.card-body{padding:0.9rem;flex:1;display:flex;flex-direction:column;gap:0.35rem;}
+.card-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--navy);line-height:1.2;}
+.card-desc{font-size:0.7rem;color:var(--text-muted);line-height:1.55;}
+.card-price{font-size:0.82rem;font-weight:500;color:var(--navy);margin-top:auto;padding-top:0.5rem;}
+.card-price span{color:var(--gold-dark);font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;}
+.card-actions{display:flex;}
+.view-btn{flex:1;display:flex;align-items:center;justify-content:center;padding:0.65rem;background:var(--navy);color:var(--white);border:none;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;cursor:pointer;text-decoration:none;font-family:'DM Sans',sans-serif;transition:background 0.2s;}
+.view-btn:hover{background:var(--gold-dark);}
+.buy-btn{width:44px;display:flex;align-items:center;justify-content:center;padding:0.65rem;background:#25D366;color:white;border:none;cursor:pointer;transition:opacity 0.2s;border-left:1px solid rgba(255,255,255,0.15);}
+.buy-btn:hover{opacity:0.88;}
+.buy-btn svg{width:15px;height:15px;fill:white;flex-shrink:0;}
+
+/* ── TESTIMONIALS ── */
+.testimonials-section{padding:5rem 1.4rem;background:var(--navy);overflow:hidden;}
+.testimonials-section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,8vw,2.8rem);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:2.5rem;}
+.testimonials-section h2 em{font-style:italic;color:var(--gold-light);}
+.testimonials-list{display:flex;flex-direction:column;gap:1.2rem;}
+.testimonial-card{background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,76,0.15);border-radius:4px;padding:1.4rem;}
+.tcard-stars{display:flex;gap:3px;margin-bottom:0.9rem;}
+.tcard-stars span{color:var(--gold);font-size:0.8rem;}
+.tcard-quote{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:rgba(255,255,255,0.88);line-height:1.6;font-style:italic;margin-bottom:1rem;}
+.tcard-author{display:flex;align-items:center;gap:0.7rem;}
+.tcard-avatar{width:34px;height:34px;border-radius:50%;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:500;color:var(--gold-light);text-transform:uppercase;}
+.tcard-name{font-size:0.8rem;font-weight:500;color:var(--white);}
+.tcard-city{font-size:0.68rem;color:rgba(255,255,255,0.4);}
+
+/* ── CUSTOM CTA ── */
+.custom-cta{padding:5rem 1.4rem;background:var(--gold-pale);text-align:center;}
+.custom-cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,9vw,3.2rem);font-weight:400;color:var(--navy);line-height:1.1;margin-bottom:1rem;}
+.custom-cta h2 em{font-style:italic;color:var(--gold-dark);}
+.custom-cta p{font-size:0.88rem;color:#555;line-height:1.8;margin-bottom:2rem;max-width:380px;margin-left:auto;margin-right:auto;}
+.custom-cta .features{display:grid;grid-template-columns:repeat(2,1fr);gap:0.8rem;margin-bottom:2.5rem;}
+.feature-pill{background:var(--white);border:1px solid rgba(201,168,76,0.35);border-radius:3px;padding:0.9rem 0.7rem;font-size:0.72rem;color:var(--navy);line-height:1.5;text-align:center;}
+.feature-pill strong{display:block;font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold-dark);margin-bottom:0.2rem;}
+
+/* ── GALLERY ── */
+.gallery-section{padding:5rem 1.4rem;background:var(--white);}
+.gallery-section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,8vw,2.8rem);font-weight:400;color:var(--navy);line-height:1.05;margin-bottom:0.5rem;}
+.gallery-section .lead{font-size:0.82rem;color:var(--text-muted);margin-bottom:2rem;}
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;}
+.gallery-item{position:relative;aspect-ratio:1;overflow:hidden;border-radius:3px;cursor:pointer;}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s;}
+.gallery-item:hover img{transform:scale(1.06);}
+.gallery-item-overlay{position:absolute;inset:0;background:rgba(14,21,45,0);display:flex;align-items:center;justify-content:center;transition:background 0.3s;}
+.gallery-item:hover .gallery-item-overlay{background:rgba(14,21,45,0.4);}
+.gallery-item-overlay span{color:var(--white);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;opacity:0;transition:opacity 0.3s;}
+.gallery-item:hover .gallery-item-overlay span{opacity:1;}
+.gallery-item.tall{grid-row:span 2;}
+
+/* ── FOOTER ── */
+footer{background:var(--navy-deep);padding:3.5rem 1.4rem 2rem;color:rgba(255,255,255,0.4);border-top:1px solid rgba(201,168,76,0.1);}
+.footer-top{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.07);}
+.footer-full{grid-column:1/-1;}
+.footer-brand .brand{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:white;}
+.footer-brand .sub{font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-top:2px;}
+.footer-brand p{font-size:0.78rem;margin-top:0.8rem;line-height:1.7;max-width:260px;}
+.footer-links h4{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.9rem;font-weight:500;}
+.footer-links a{display:block;color:rgba(255,255,255,0.38);text-decoration:none;font-size:0.78rem;margin-bottom:0.5rem;transition:color 0.2s;}
+.footer-links a:hover{color:var(--white);}
+.footer-bottom{font-size:0.68rem;text-align:center;line-height:1.6;}
+.footer-bottom a{color:var(--gold);text-decoration:none;}
+.footer-wa-row{display:flex;align-items:center;gap:0.8rem;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.07);}
+.footer-wa-btn{display:inline-flex;align-items:center;gap:0.5rem;background:#25D366;color:#fff;text-decoration:none;font-size:0.72rem;font-weight:500;padding:0.6rem 1.1rem;border-radius:3px;transition:opacity 0.2s;}
+.footer-wa-btn:hover{opacity:0.88;}
+.footer-wa-btn svg{width:15px;height:15px;fill:white;}
+.footer-wa-label{font-size:0.72rem;color:rgba(255,255,255,0.35);}
+
+/* ── WA FLOAT ── */
+.wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:300;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35);text-decoration:none;transition:transform 0.2s;}
+.wa-float:hover{transform:scale(1.09);}
+.wa-float svg{width:27px;height:27px;fill:white;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="brand">EasytoDecor</span>
+    <span class="sub">by Aastitva Architects</span>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#shop">Shop</a>
+    <a href="https://wa.me/919517100073?text=Hi%2C%20I%20want%20a%20custom%20order!" target="_blank" class="nav-wa">Order Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <img class="hero-img" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=900&q=80" alt="Beautiful home interior">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Handcrafted in India · Est. 2024</div>
+    <h1>Your Space.<br>Your <em>Story.</em></h1>
+    <p class="hero-sub">Bespoke resin art, statement furniture & hand-stitched leather goods — designed with the eye of an architect.</p>
+    <div class="hero-actions">
+      <a href="#shop" class="btn-primary">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        Browse Collection
+      </a>
+      <a href="https://wa.me/919517100073?text=Hi!%20I%20want%20to%20place%20a%20custom%20order." target="_blank" class="btn-ghost">Custom Order</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span>Resin Art</span><span class="dot">·</span><span>River Tables</span><span class="dot">·</span><span>Leather Desk Pads</span><span class="dot">·</span><span>Keyboard Covers</span><span class="dot">·</span><span>Pot Covers</span><span class="dot">·</span><span>Custom Orders Welcome</span><span class="dot">·</span><span>Made in India</span><span class="dot">·</span><span>Handcrafted</span><span class="dot">·</span>
+    <span>Resin Art</span><span class="dot">·</span><span>River Tables</span><span class="dot">·</span><span>Leather Desk Pads</span><span class="dot">·</span><span>Keyboard Covers</span><span class="dot">·</span><span>Pot Covers</span><span class="dot">·</span><span>Custom Orders Welcome</span><span class="dot">·</span><span>Made in India</span><span class="dot">·</span><span>Handcrafted</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- BRAND STORY -->
+<section class="brand-story fade-up" id="about">
+  <p class="section-eyebrow">Our Story</p>
+  <h2>Where<br>Architecture<br>meets <em>Craft</em></h2>
+  <p>EasytoDecor was born from the belief that beautiful spaces shouldn't be complicated. We bring the precision of architectural design into everyday objects — pieces that breathe warmth, character, and intention into your home.</p>
+  <p>From flowing resin tabletops to hand-stitched leather workspace companions, each product is considered, crafted, and built to last decades — not seasons.</p>
+  <div class="presented-by">
+    <div class="pb-label">Presented by</div>
+    <div class="pb-name">Aastitva Architects</div>
+    <div class="pb-desc">A design studio rooted in the idea that the spaces we inhabit shape who we become. EasytoDecor is their curated collection of objects for the thoughtfully designed life.</div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band fade-up">
+  <div class="stat-item"><div class="stat-num">200+</div><div class="stat-label">Pieces Crafted</div></div>
+  <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Handmade</div></div>
+  <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Collections</div></div>
+  <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Custom Options</div></div>
+</div>
+
+<!-- CATEGORY SHOWCASE -->
+<section class="cat-showcase fade-up">
+  <p class="section-eyebrow">Explore</p>
+  <h2>Two worlds,<br>one vision.</h2>
+  <div class="cat-cards">
+    <a class="cat-card" href="#shop" onclick="filterCat('resin',null)">
+      <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?w=700&q=80" alt="Resin">
+      <div class="cat-card-overlay"><span class="cat-card-label">Collection 01</span><div class="cat-card-title">Resin</div><div class="cat-card-items">Art · River Tables · Trays · Wall Panels</div></div>
+      <div class="cat-card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </a>
+    <a class="cat-card" href="#shop" onclick="filterCat('leather',null)">
+      <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=700&q=80" alt="Leather">
+      <div class="cat-card-overlay"><span class="cat-card-label">Collection 02</span><div class="cat-card-title">Leather</div><div class="cat-card-items">Desk Pads · Keyboard Covers · Pot Wraps</div></div>
+      <div class="cat-card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </a>
+  </div>
+</section>
+
+<!-- IMAGE STRIP -->
+<div class="img-strip fade-up">
+  <img src="https://images.unsplash.com/photo-1567538096621-38d2284b23ff?w=400&q=80" alt="Detail">
+  <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Art">
+  <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&q=80" alt="Leather">
+</div>
+
+<!-- PROCESS -->
+<section class="process-section fade-up">
+  <p class="section-eyebrow">The Process</p>
+  <h2>Made with<br>intention.</h2>
+  <p class="lead">Every EasytoDecor product goes through a careful, hands-on process. No shortcuts, no mass production.</p>
+  <div class="process-steps">
+    <div class="process-step"><div class="step-num">01</div><div><div class="step-title">Design & Consultation</div><div class="step-desc">We start with your space in mind. Custom sizes, colour palettes, and finishes are discussed before a single drop of resin is poured.</div></div></div>
+    <div class="process-step"><div class="step-num">02</div><div><div class="step-title">Material Selection</div><div class="step-desc">Only food-safe, non-toxic epoxy resins and full-grain or vegetable-tanned leathers make the cut. Pigments are hand-blended for every pour.</div></div></div>
+    <div class="process-step"><div class="step-num">03</div><div><div class="step-title">Handcrafting</div><div class="step-desc">Resin pieces cure over 48–72 hours; leather is cut, edged, and saddle-stitched by hand. Every piece demands patience — and gets it.</div></div></div>
+    <div class="process-step"><div class="step-num">04</div><div><div class="step-title">Finishing & Quality Check</div><div class="step-desc">Surfaces are sanded through multiple grits and sealed to a glass finish. Every piece is inspected before it leaves the studio.</div></div></div>
+  </div>
+</section>
+
+<!-- SHOP — rendered by JS from products.js -->
+<section class="shop-section fade-up" id="shop">
+  <div class="shop-header">
+    <p class="section-eyebrow">The Collection</p>
+    <h2>Shop by<br>Category</h2>
+    <div class="cat-tabs">
+      <button class="cat-tab active" onclick="filterCat('resin',this)">Resin</button>
+      <button class="cat-tab" onclick="filterCat('leather',this)">Leather</button>
+      <button class="cat-tab" onclick="filterCat('all',this)">All</button>
+    </div>
+  </div>
+  <div class="products-grid" id="products-grid">
+    <!-- Cards injected by JS -->
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section fade-up">
+  <p class="section-eyebrow-light">What Customers Say</p>
+  <h2>Loved by<br><em>real homes.</em></h2>
+  <div class="testimonials-list">
+    <div class="testimonial-card"><div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="tcard-quote">"The resin tray I ordered is absolutely stunning. Every guest who visits asks about it. Worth every rupee."</div><div class="tcard-author"><div class="tcard-avatar">PR</div><div><div class="tcard-name">Priya Rastogi</div><div class="tcard-city">Delhi, India</div></div></div></div>
+    <div class="testimonial-card"><div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="tcard-quote">"Got the leather desk pad for my home office. It's transformed the entire feel of my workspace. Exceptional quality."</div><div class="tcard-author"><div class="tcard-avatar">AK</div><div><div class="tcard-name">Arjun Khanna</div><div class="tcard-city">Mumbai, India</div></div></div></div>
+    <div class="testimonial-card"><div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="tcard-quote">"Ordered a custom colour resin wall piece. The team sent progress photos throughout. Couldn't be happier!"</div><div class="tcard-author"><div class="tcard-avatar">SV</div><div><div class="tcard-name">Sneha Verma</div><div class="tcard-city">Bengaluru, India</div></div></div></div>
+  </div>
+</section>
+
+<!-- CUSTOM ORDER CTA -->
+<section class="custom-cta fade-up">
+  <p class="section-eyebrow">Custom Orders</p>
+  <h2>Can't find<br>what you <em>imagine?</em></h2>
+  <p>Every space is different. We love creating pieces designed specifically for you — your dimensions, your palette, your vision.</p>
+  <div class="features">
+    <div class="feature-pill"><strong>Your Size</strong>Custom dimensions on every product</div>
+    <div class="feature-pill"><strong>Your Colour</strong>Match any interior palette</div>
+    <div class="feature-pill"><strong>Your Material</strong>Choose from our options</div>
+    <div class="feature-pill"><strong>Fast TAT</strong>Most orders in 7–14 days</div>
+  </div>
+  <a href="https://wa.me/919517100073?text=Hi!%20I%20want%20to%20discuss%20a%20custom%20order." target="_blank" class="btn-primary">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    Start a Custom Order
+  </a>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section fade-up">
+  <p class="section-eyebrow">Studio Work</p>
+  <h2>From our hands.</h2>
+  <p class="lead">A glimpse of our process, our space, and the pieces we're proud of.</p>
+  <div class="gallery-grid">
+    <div class="gallery-item tall"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400&q=80" alt="Studio" loading="lazy"><div class="gallery-item-overlay"><span>Studio</span></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=80" alt="Resin Art" loading="lazy"><div class="gallery-item-overlay"><span>Resin Art</span></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1567538096621-38d2284b23ff?w=300&q=80" alt="Tray" loading="lazy"><div class="gallery-item-overlay"><span>Resin Tray</span></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=300&q=80" alt="Leather" loading="lazy"><div class="gallery-item-overlay"><span>Leather</span></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=300&q=80" alt="Pots" loading="lazy"><div class="gallery-item-overlay"><span>Pot Covers</span></div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand footer-full">
+      <div class="brand">EasytoDecor</div>
+      <div class="sub">by Aastitva Architects</div>
+      <p>Handcrafted resin and leather goods — designed with the precision of architecture and the warmth of craft.</p>
+      <div class="footer-wa-row">
+        <a class="footer-wa-btn" href="https://wa.me/919517100073?text=Hi!" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          +91 95171 00073
+        </a>
+        <span class="footer-wa-label">Chat with us directly</span>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Shop</h4>
+      <a href="#shop" onclick="filterCat('resin',null)">Resin Collection</a>
+      <a href="#shop" onclick="filterCat('leather',null)">Leather Collection</a>
+      <a href="#shop" onclick="filterCat('all',null)">All Products</a>
+    </div>
+    <div class="footer-links">
+      <h4>Company</h4>
+      <a href="#about">Our Story</a>
+      <a href="https://wa.me/919517100073" target="_blank">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 EasytoDecor · Presented by <a href="#">Aastitva Architects</a> · Handcrafted in India.</p>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/919517100073?text=Hi%2C%20I%20visited%20EasytoDecor!" target="_blank" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<!-- Load products and render cards -->
+<script src="products.js"></script>
+<script>
+const WA = '919517100073';
+let currentCat = 'resin';
+
+const WA_SVG = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>`;
+
+function renderProducts(cat) {
+  currentCat = cat;
+  const list = cat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.category === cat);
+  const grid = document.getElementById('products-grid');
+  grid.innerHTML = list.map(p => `
+    <div class="product-card">
+      <a href="product.html?id=${p.id}" style="display:block;text-decoration:none;">
+        <img class="card-img" src="${p.images[0]}" alt="${p.name}" loading="lazy">
+      </a>
+      <span class="card-cat-badge ${p.category === 'resin' ? 'badge-resin' : 'badge-leather'}">${p.category} · ${p.subcategory}</span>
+      ${p.badge ? `<span style="position:absolute;top:0.6rem;right:0.6rem;font-size:0.5rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.5rem;border-radius:2px;background:var(--gold);color:var(--navy);font-weight:600;">${p.badge}</span>` : ''}
+      <div class="card-body">
+        <div class="card-name">${p.name}</div>
+        <div class="card-desc">${p.tagline}</div>
+        <div class="card-price">From <span>${p.price}</span></div>
+      </div>
+      <div class="card-actions">
+        <a class="view-btn" href="product.html?id=${p.id}">View Details</a>
+        <button class="buy-btn" onclick="quickBuy('${p.id}')" title="Order via WhatsApp">${WA_SVG}</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function quickBuy(id) {
+  const p = getProductById(id);
+  if (!p) return;
+  const msg = p.whatsappMessage + `\n\nProduct: ${window.location.origin}/product.html?id=${p.id}`;
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+function filterCat(cat, btn) {
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderProducts(cat);
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Init — render resin products on load
+renderProducts('resin');
+</script>
+</body>
+</html>
