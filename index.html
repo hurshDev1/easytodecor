@@ -211,8 +211,7 @@ footer{background:var(--navy-deep);padding:3.5rem 1.4rem 2rem;color:rgba(255,255
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <span class="brand">EasytoDecor</span>
-    <span class="sub">by Aastitva Architects</span>
+    <img src="images/decor.svg" width='150px' class="brand-logo" alt="EasytoDecor logo">
   </div>
   <div class="nav-links">
     <a href="#about">About</a>
@@ -221,7 +220,48 @@ footer{background:var(--navy-deep);padding:3.5rem 1.4rem 2rem;color:rgba(255,255
   </div>
 </nav>
 
+<!-- NAV
+<nav>
+  <div class="nav-logo">
+    <span class="brand">EasytoDecor</span>
+    <span class="sub">by Aastitva Architects</span>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#shop">Shop</a>
+    <a href="https://wa.me/919517100073?text=Hi%2C%20I%20want%20a%20custom%20order!" target="_blank" class="nav-wa">Order Now</a>
+  </div>
+</nav> -->
 <!-- HERO -->
+<section class="hero" id="home" style="position: relative; overflow: hidden; background-color: #000;">
+  
+  <!-- Image takes up full background -->
+  <img class="hero-img" src="images/hero-image.jpeg" alt="Beautiful home interior" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  
+  <!-- Left-to-Right Black Gradient Overlay -->
+  <div class="hero-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0) 100%); pointer-events: none; z-index: 1;"></div>
+  
+  <!-- Content explicitly layered above the gradient -->
+  <div class="hero-content" style="position: relative; z-index: 2;">
+    <div class="hero-tag">Handcrafted in India · for World</div>
+    <h1>Styled to<br><em>Inspire</em></h1>
+    <p class="hero-sub">Bespoke resin art, statement furniture &amp; hand-stitched leather goods — designed with the eye of an architect.</p>
+    <div class="hero-actions">
+      <a href="#shop" class="btn-primary">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"></path></svg>
+        Browse Collection
+      </a>
+      <a href="https://wa.me/919517100073?text=Hi!%20I%20want%20to%20place%20a%20custom%20order." target="_blank" class="btn-ghost">Custom Order</a>
+    </div>
+  </div>
+  
+  <!-- Scroll element layered safely -->
+  <div class="hero-scroll" style="position: relative; z-index: 2;">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+<!-- HERO
 <section class="hero" id="home">
   <img class="hero-img" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=900&q=80" alt="Beautiful home interior">
   <div class="hero-overlay"></div>
@@ -241,7 +281,7 @@ footer{background:var(--navy-deep);padding:3.5rem 1.4rem 2rem;color:rgba(255,255
     <div class="hero-scroll-line"></div>
     <span>Scroll</span>
   </div>
-</section>
+</section> -->
 
 <!-- MARQUEE -->
 <div class="marquee-strip">
@@ -251,8 +291,44 @@ footer{background:var(--navy-deep);padding:3.5rem 1.4rem 2rem;color:rgba(255,255
   </div>
 </div>
 
+
 <!-- BRAND STORY -->
-<section class="brand-story fade-up" id="about">
+<section class="brand-story fade-up visible" id="about">
+  <p class="section-eyebrow">Our Story</p>
+  <h2>Where<br>Architecture<br>meets <em>Craft</em></h2>
+  <p>Ar. Avish Makhija &amp; Ar. Harsha Chayal</p>
+<p>
+Once upon a time, A team of Visionary Architects and Designers embarked 
+on a mission to Create something truly Special. They aimed to transform 
+everyday spaces into inspiring havens of style and Simplicity. Thus, 
+Easy to Decor was born.
+</p><p>
+They discovered that Elegance and Practicality could Co-exist 
+Seamlessly. By Curating a selection of Premium yet Affordable Products, 
+They Achieved a Perfect blend of Beauty and Functionality. Their goal 
+was to make Sophisticated design accessible to All, without Sacrificing 
+quality or Practicality.
+</p><p>
+As the Company launched, It was more than just Decorating spaces; It was
+ about Creating environments Where daily life felt effortlessly Stylish.
+ With passion and Commitment, Easy to Decor began its Journey, turning 
+Ordinary Interiors into Extraordinary places Where beauty meets 
+Simplicity. This venture by Aastitva Visualisers pvt. ltd., A leader in 
+Visualizing Dream Spaces, Redefines Sophisticated Living.</p>
+  <p>From flowing resin tabletops to hand-stitched leather workspace 
+companions, each product is considered, crafted, and built to last 
+decades — not seasons.</p>
+  <div class="presented-by">
+    <div class="pb-label">Presented by</div>
+    <div class="pb-name">Aastitva Architects</div>
+    <div class="pb-desc">A design studio rooted in the idea that the 
+spaces we inhabit shape who we become. EasytoDecor is their curated 
+collection of objects for the thoughtfully designed life.</div>
+  </div>
+</section>
+
+<!-- BRAND STORY -->
+<!-- <section class="brand-story fade-up" id="about">
   <p class="section-eyebrow">Our Story</p>
   <h2>Where<br>Architecture<br>meets <em>Craft</em></h2>
   <p>EasytoDecor was born from the belief that beautiful spaces shouldn't be complicated. We bring the precision of architectural design into everyday objects — pieces that breathe warmth, character, and intention into your home.</p>
@@ -262,7 +338,7 @@ footer{background:var(--navy-deep);padding:3.5rem 1.4rem 2rem;color:rgba(255,255
     <div class="pb-name">Aastitva Architects</div>
     <div class="pb-desc">A design studio rooted in the idea that the spaces we inhabit shape who we become. EasytoDecor is their curated collection of objects for the thoughtfully designed life.</div>
   </div>
-</section>
+</section> -->
 
 <!-- STATS BAND -->
 <div class="stats-band fade-up">
@@ -278,12 +354,12 @@ footer{background:var(--navy-deep);padding:3.5rem 1.4rem 2rem;color:rgba(255,255
   <h2>Two worlds,<br>one vision.</h2>
   <div class="cat-cards">
     <a class="cat-card" href="#shop" onclick="filterCat('resin',null)">
-      <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?w=700&q=80" alt="Resin">
+      <img src="images/resin-table.jpeg" alt="Resin">
       <div class="cat-card-overlay"><span class="cat-card-label">Collection 01</span><div class="cat-card-title">Resin</div><div class="cat-card-items">Art · River Tables · Trays · Wall Panels</div></div>
       <div class="cat-card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     </a>
     <a class="cat-card" href="#shop" onclick="filterCat('leather',null)">
-      <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=700&q=80" alt="Leather">
+      <img src="images/leather.jpeg" alt="Leather">
       <div class="cat-card-overlay"><span class="cat-card-label">Collection 02</span><div class="cat-card-title">Leather</div><div class="cat-card-items">Desk Pads · Keyboard Covers · Pot Wraps</div></div>
       <div class="cat-card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     </a>
@@ -292,9 +368,9 @@ footer{background:var(--navy-deep);padding:3.5rem 1.4rem 2rem;color:rgba(255,255
 
 <!-- IMAGE STRIP -->
 <div class="img-strip fade-up">
-  <img src="https://images.unsplash.com/photo-1567538096621-38d2284b23ff?w=400&q=80" alt="Detail">
-  <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Art">
-  <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&q=80" alt="Leather">
+  <img src="images/hero-image.jpeg" alt="Detail">
+  <img src="images/leather.jpeg" alt="Art">
+  <img src="images/resin-art.jpeg" alt="Leather">
 </div>
 
 <!-- PROCESS -->
@@ -323,6 +399,38 @@ footer{background:var(--navy-deep);padding:3.5rem 1.4rem 2rem;color:rgba(255,255
   </div>
   <div class="products-grid" id="products-grid">
     <!-- Cards injected by JS -->
+  </div>
+</section>
+
+<!-- TEAM / EXPERT PROFILE -->
+<section class="brand-story fade-up visible" id="team-profile">
+  <p class="section-eyebrow">Meet the Architect</p>
+  <div class="team-row">
+    <img class="team-photo" src="images/Harsha-Chayal.jpeg" alt="Ar. Harsha Chayal">
+    <div class="team-meta">
+      <div class="team-name">Ar. Harsha Chayal</div>
+      <div class="team-title">Architect &amp; Product Designer</div>
+      <div class="team-copy">
+        <p><strong>About the Collection</strong></p>
+        <p>Our collection is a careful intersection of architectural 
+sensibility and hands-on craft. Under Ar. Harsha Chayal’s direction, 
+each piece is conceived with spatial thinking — volumetric balance, 
+material honesty, and long-lasting finishes — then realised through 
+meticulous handwork. We blend advanced epoxy practices with traditional 
+woodworking and leatherwork to deliver statement furniture and 
+functional art that belong in considered homes.</p>
+        <p><strong>What We Offer</strong></p>
+        <ul style="margin-top:0.4rem;color:var(--text-body);">
+          <li>Custom resin tabletops &amp; wall panels, designed for scale and proportion.</li>
+          <li>Bespoke furniture pieces where form meets durable finishes.</li>
+          <li>Product design consultation for residential and small commercial projects.</li>
+          <li>End-to-end delivery: design, material sourcing, craft, and installation.</li>
+        </ul>
+        <p style="margin-top:0.6rem;">To discuss custom proportions, 
+finishes or collaborations, reach out and we'll guide you through the 
+process from concept to installation.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -355,7 +463,19 @@ footer{background:var(--navy-deep);padding:3.5rem 1.4rem 2rem;color:rgba(255,255
 </section>
 
 <!-- GALLERY -->
-<section class="gallery-section fade-up">
+ <section class="gallery-section fade-up visible">
+  <p class="section-eyebrow">Studio Work</p>
+  <h2>From our hands.</h2>
+  <p class="lead">A glimpse of our process, our space, and the pieces we're proud of.</p>
+  <div class="gallery-grid">
+    <div class="gallery-item tall"><img src="images/studio.jpeg" alt="Studio" loading="lazy"><div class="gallery-item-overlay"><span>Studio</span></div></div>
+    <div class="gallery-item"><img src="images/resin-art.jpeg" alt="Resin Art" loading="lazy"><div class="gallery-item-overlay"><span>Resin Art</span></div></div>
+    <div class="gallery-item"><img src="images/leather.jpeg" alt="leather" loading="lazy"><div class="gallery-item-overlay"><span>Leather</span></div></div>
+    <div class="gallery-item"><img src="images/resin-table.jpeg" alt="table" loading="lazy"><div class="gallery-item-overlay"><span>Tables</span></div></div>
+    <div class="gallery-item"><img src="images/pot-cover.jpg" alt="Pots" loading="lazy"><div class="gallery-item-overlay"><span>Pot Covers</span></div></div>
+  </div>
+</section>
+<!-- <section class="gallery-section fade-up">
   <p class="section-eyebrow">Studio Work</p>
   <h2>From our hands.</h2>
   <p class="lead">A glimpse of our process, our space, and the pieces we're proud of.</p>
@@ -366,13 +486,13 @@ footer{background:var(--navy-deep);padding:3.5rem 1.4rem 2rem;color:rgba(255,255
     <div class="gallery-item"><img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=300&q=80" alt="Leather" loading="lazy"><div class="gallery-item-overlay"><span>Leather</span></div></div>
     <div class="gallery-item"><img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=300&q=80" alt="Pots" loading="lazy"><div class="gallery-item-overlay"><span>Pot Covers</span></div></div>
   </div>
-</section>
+</section> -->
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand footer-full">
-      <div class="brand">EasytoDecor</div>
+      <img src="images/decor.svg" width='250px' style="margin:-50px; filter: invert(1) brightness(100);" class="brand-logo" alt="EasytoDecor logo">
       <div class="sub">by Aastitva Architects</div>
       <p>Handcrafted resin and leather goods — designed with the precision of architecture and the warmth of craft.</p>
       <div class="footer-wa-row">
