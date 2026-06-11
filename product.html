@@ -487,6 +487,37 @@
       fill: white;
     }
 
+    .btn-buy-amazon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: #FF9900;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 3px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      flex: 1;
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .btn-buy-amazon:hover {
+      background: #FF8C00;
+    }
+
+    .btn-buy-amazon svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+    }
+
     .section-title {
       font-size: 0.75rem;
       letter-spacing: 0.15em;
@@ -742,6 +773,9 @@
               <a href="${waLink}" target="_blank" class="btn-buy-wa">
                 ${WA_SVG} Purchase on WhatsApp
               </a>
+              ${currentProduct.amazonLink ? `<a href="${currentProduct.amazonLink}" target="_blank" class="btn-buy-amazon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 8.5h16v2H4z"/><path d="M4 13h16v2H4z"/><path d="M4 17.5h16v2H4z"/><path d="M19.5 2C20.88 2 22 3.12 22 4.5v15c0 1.38-1.12 2.5-2.5 2.5H4.5C3.12 22 2 20.88 2 19.5v-15C2 3.12 3.12 2 4.5 2h15zm0 2H4.5c-.28 0-.5.22-.5.5v15c0 .28.22.5.5.5h15c.28 0 .5-.22.5-.5v-15c0-.28-.22-.5-.5-.5z"/></svg> Buy on Amazon
+              </a>` : ''}
             </div>
             
             <div>

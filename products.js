@@ -285,7 +285,8 @@ const PRODUCTS = [
       "Durable, hand-aligned stitching"
     ],
     careInstructions: "Wipe with a soft, damp cloth. Do not submerge in water. Remove plant pot when watering or use an inner saucer.",
-    whatsappMessage: "Hi! I am interested in the Black Leather Plant Pot Cover."
+    whatsappMessage: "Hi! I am interested in the Black Leather Plant Pot Cover.",
+    amazonLink: "https://www.amazon.in/dp/B0DT6XVHBT?th=1"
   },
   {
     id: "dark-brown-leather-pot-cover",
@@ -317,7 +318,8 @@ const PRODUCTS = [
       "Exquisite hand-stitched detailing"
     ],
     careInstructions: "Wipe clean with a dry or slightly damp microfiber cloth. Keep away from direct excessive water.",
-    whatsappMessage: "Hi! I am interested in the Dark Brown Leather Plant Pot Cover."
+    whatsappMessage: "Hi! I am interested in the Dark Brown Leather Plant Pot Cover.",
+    amazonLink: "https://www.amazon.in/dp/B0DT6XVHBT?th=1"
   },
   {
     id: "golden-brown-leather-pot-cover",
@@ -351,7 +353,8 @@ const PRODUCTS = [
       "Architectural profile"
     ],
     careInstructions: "Clean with a soft damp cloth. Avoid submerging. Use a saucer inside to catch drainage.",
-    whatsappMessage: "Hi! I am interested in the Golden Brown Leather Plant Pot Cover."
+    whatsappMessage: "Hi! I am interested in the Golden Brown Leather Plant Pot Cover.",
+    amazonLink: "https://www.amazon.in/dp/B0DT6XVHBT?th=1"
   },
   {
     id: "light-sandy-beige-leather-pot-cover",
@@ -385,7 +388,8 @@ const PRODUCTS = [
       "Saddle-stitched seams"
     ],
     careInstructions: "Wipe clean with a damp cloth. Use an internal tray to collect runoff water.",
-    whatsappMessage: "Hi! I am interested in the Light Sandy Beige Leather Plant Pot Cover."
+    whatsappMessage: "Hi! I am interested in the Light Sandy Beige Leather Plant Pot Cover.",
+    amazonLink: "https://www.amazon.in/dp/B0DT6XVHBT?th=1"
   },
   {
     id: "reddish-brown-leather-pot-cover",
@@ -419,7 +423,8 @@ const PRODUCTS = [
       "Handcrafted quality"
     ],
     careInstructions: "Wipe clean with a soft microfiber cloth. Do not submerge. Use an inner saucer.",
-    whatsappMessage: "Hi! I am interested in the Reddish Brown Leather Plant Pot Cover."
+    whatsappMessage: "Hi! I am interested in the Reddish Brown Leather Plant Pot Cover.",
+    amazonLink: "https://www.amazon.in/dp/B0DT6XVHBT?th=1"
   }
 ];
 
