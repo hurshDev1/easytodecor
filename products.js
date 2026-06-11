@@ -255,6 +255,171 @@ const PRODUCTS = [
     features: ["Cascading waterfall edge", "Live-edge wood", "Hand-polished finish"],
     careInstructions: "Wipe with a soft, damp cloth. Use coasters for hot items and avoid direct sunlight.",
     whatsappMessage: "Hi! I am interested in the Wood Waterfall Resin Table."
+  },
+  {
+    id: "black-leather-pot-cover",
+    category: "leather",
+    subcategory: "Pot Covers",
+    name: "Black Leather Plant Pot Cover",
+    tagline: "Enhances the Look of Indoor Plant pots with a Modern, Elegant Design.",
+    price: "₹280",
+    images: [
+      "images/leatherPotCovers/black/black/ChatGPT Image May 18, 2026, 04_52_44 PM.png",
+      "images/leatherPotCovers/black/black/ChatGPT Image May 18, 2026, 04_53_44 PM.png",
+      "images/leatherPotCovers/black/black/White and Beige Neutral Clean Women Bags Instagram Post (24).png",
+      "images/leatherPotCovers/black/black/White and Beige Neutral Clean Women Bags Instagram Post (25).png",
+      "images/leatherPotCovers/black/black/White and Beige Neutral Clean Women Bags Instagram Post (26).png",
+      "images/leatherPotCovers/black/black/White and Beige Neutral Clean Women Bags Instagram Post (27).png"
+    ],
+    description: "Our Black Leather Plant Pot Cover is a stylish, decorative sleeve designed to elevate the look of your indoor green spaces. Made from premium, water-resistant leather, it wraps around standard indoor plant pots to introduce a modern, architectural design to your desk, shelves, or windowsills.",
+    details: [
+      { label: "Color", value: "Black" },
+      { label: "Material", value: "Premium Leather with Water-Resistant Lining" },
+      { label: "Craft", value: "Hand-finished and burnished edges" },
+      { label: "Fits Pots", value: "Standard indoor pots" }
+    ],
+    features: [
+      "Modern minimalist aesthetic",
+      "Water-resistant interior protection",
+      "Folds flat for storage",
+      "Durable, hand-aligned stitching"
+    ],
+    careInstructions: "Wipe with a soft, damp cloth. Do not submerge in water. Remove plant pot when watering or use an inner saucer.",
+    whatsappMessage: "Hi! I am interested in the Black Leather Plant Pot Cover."
+  },
+  {
+    id: "dark-brown-leather-pot-cover",
+    category: "leather",
+    subcategory: "Pot Covers",
+    name: "Dark Brown Leather Plant Pot Cover",
+    tagline: "Enhances the Look of Indoor Plant pots with a Modern, Elegant Design.",
+    price: "₹280",
+    images: [
+      "images/leatherPotCovers/dark brown/dark brown/ChatGPT Image May 18, 2026, 04_54_28 PM.png",
+      "images/leatherPotCovers/dark brown/dark brown/ChatGPT Image May 18, 2026, 04_55_30 PM.png",
+      "images/leatherPotCovers/dark brown/dark brown/ChatGPT Image May 18, 2026, 04_57_27 PM.png",
+      "images/leatherPotCovers/dark brown/dark brown/White and Beige Neutral Clean Women Bags Instagram Post (15).png",
+      "images/leatherPotCovers/dark brown/dark brown/White and Beige Neutral Clean Women Bags Instagram Post (16).png",
+      "images/leatherPotCovers/dark brown/dark brown/White and Beige Neutral Clean Women Bags Instagram Post (17).png",
+      "images/leatherPotCovers/dark brown/dark brown/White and Beige Neutral Clean Women Bags Instagram Post (18).png"
+    ],
+    description: "Our Dark Brown Leather Plant Pot Cover brings a rich, classic aesthetic to your home garden. Expertly crafted from premium materials, this cover wraps around plain pots to create a refined, architectural presentation for your favorite indoor plants.",
+    details: [
+      { label: "Color", value: "Dark Brown" },
+      { label: "Material", value: "Premium Leather with Water-Resistant Lining" },
+      { label: "Craft", value: "Hand-finished and burnished edges" },
+      { label: "Fits Pots", value: "Standard indoor pots" }
+    ],
+    features: [
+      "Rich dark brown finish",
+      "Water-resistant interior lining",
+      "Folds flat for space-saving storage",
+      "Exquisite hand-stitched detailing"
+    ],
+    careInstructions: "Wipe clean with a dry or slightly damp microfiber cloth. Keep away from direct excessive water.",
+    whatsappMessage: "Hi! I am interested in the Dark Brown Leather Plant Pot Cover."
+  },
+  {
+    id: "golden-brown-leather-pot-cover",
+    category: "leather",
+    subcategory: "Pot Covers",
+    name: "Golden Brown Leather Plant Pot Cover",
+    tagline: "Enhances the Look of Indoor Plant pots with a Modern, Elegant Design.",
+    price: "₹280",
+    images: [
+      "images/leatherPotCovers/golden brown/golden brown/ChatGPT Image May 18, 2026, 05_01_14 PM.png",
+      "images/leatherPotCovers/golden brown/golden brown/ChatGPT Image May 18, 2026, 05_02_11 PM.png",
+      "images/leatherPotCovers/golden brown/golden brown/ChatGPT Image May 18, 2026, 06_48_32 PM.png",
+      "images/leatherPotCovers/golden brown/golden brown/White and Beige Neutral Clean Women Bags Instagram Post (8).png",
+      "images/leatherPotCovers/golden brown/golden brown/White and Beige Neutral Clean Women Bags Instagram Post (10).png",
+      "images/leatherPotCovers/golden brown/golden brown/White and Beige Neutral Clean Women Bags Instagram Post (11).png",
+      "images/leatherPotCovers/golden brown/golden brown/White and Beige Neutral Clean Women Bags Instagram Post (12).png",
+      "images/leatherPotCovers/golden brown/golden brown/White and Beige Neutral Clean Women Bags Instagram Post (13).png",
+      "images/leatherPotCovers/golden brown/golden brown/White and Beige Neutral Clean Women Bags Instagram Post (14).png"
+    ],
+    description: "Conceal boring plastic pots with the warm, welcoming tones of our Golden Brown Leather Plant Pot Cover. Handmade with attention to volumetric balance and material honesty, it's the perfect statement wrap for your tabletop plants.",
+    details: [
+      { label: "Color", value: "Golden Brown" },
+      { label: "Material", value: "Premium Leather with Water-Resistant Lining" },
+      { label: "Craft", value: "Hand-finished and burnished edges" },
+      { label: "Fits Pots", value: "Standard indoor pots" }
+    ],
+    features: [
+      "Warm golden brown tone",
+      "Water-resistant interior protection",
+      "Conceals standard utility pots beautifully",
+      "Architectural profile"
+    ],
+    careInstructions: "Clean with a soft damp cloth. Avoid submerging. Use a saucer inside to catch drainage.",
+    whatsappMessage: "Hi! I am interested in the Golden Brown Leather Plant Pot Cover."
+  },
+  {
+    id: "light-sandy-beige-leather-pot-cover",
+    category: "leather",
+    subcategory: "Pot Covers",
+    name: "Light Sandy Beige Leather Plant Pot Cover",
+    tagline: "Enhances the Look of Indoor Plant pots with a Modern, Elegant Design.",
+    price: "₹280",
+    images: [
+      "images/leatherPotCovers/light sandy beige/light sandy beige/ChatGPT Image May 18, 2026, 04_50_16 PM.png",
+      "images/leatherPotCovers/light sandy beige/light sandy beige/ChatGPT Image May 18, 2026, 06_54_41 PM.png",
+      "images/leatherPotCovers/light sandy beige/light sandy beige/White and Beige Neutral Clean Women Bags Instagram Post (1).png",
+      "images/leatherPotCovers/light sandy beige/light sandy beige/White and Beige Neutral Clean Women Bags Instagram Post (2).png",
+      "images/leatherPotCovers/light sandy beige/light sandy beige/White and Beige Neutral Clean Women Bags Instagram Post (21).png",
+      "images/leatherPotCovers/light sandy beige/light sandy beige/White and Beige Neutral Clean Women Bags Instagram Post (22).png",
+      "images/leatherPotCovers/light sandy beige/light sandy beige/White and Beige Neutral Clean Women Bags Instagram Post (23).png",
+      "images/leatherPotCovers/light sandy beige/light sandy beige/White and Beige Neutral Clean Women Bags Instagram Post (28).png",
+      "images/leatherPotCovers/light sandy beige/light sandy beige/White and Beige Neutral Clean Women Bags Instagram Post.png"
+    ],
+    description: "Bring a light, coastal, or scandi-minimalist touch to your space with the Light Sandy Beige Leather Plant Pot Cover. Its neutral earthy sand hue blends effortlessly into modern bright interiors while providing durable protection.",
+    details: [
+      { label: "Color", value: "Light Sandy Beige" },
+      { label: "Material", value: "Premium Leather with Water-Resistant Lining" },
+      { label: "Craft", value: "Hand-finished and burnished edges" },
+      { label: "Fits Pots", value: "Standard indoor pots" }
+    ],
+    features: [
+      "Neutral sandy beige tone",
+      "Water-resistant interior",
+      "Clean, modern scandi-minimalist aesthetic",
+      "Saddle-stitched seams"
+    ],
+    careInstructions: "Wipe clean with a damp cloth. Use an internal tray to collect runoff water.",
+    whatsappMessage: "Hi! I am interested in the Light Sandy Beige Leather Plant Pot Cover."
+  },
+  {
+    id: "reddish-brown-leather-pot-cover",
+    category: "leather",
+    subcategory: "Pot Covers",
+    name: "Reddish Brown Leather Plant Pot Cover",
+    tagline: "Enhances the Look of Indoor Plant pots with a Modern, Elegant Design.",
+    price: "₹280",
+    images: [
+      "images/leatherPotCovers/reddish brown/reddish brown/ChatGPT Image May 18, 2026, 04_31_54 PM.png",
+      "images/leatherPotCovers/reddish brown/reddish brown/ChatGPT Image May 18, 2026, 05_03_30 PM.png",
+      "images/leatherPotCovers/reddish brown/reddish brown/ChatGPT Image May 18, 2026, 05_03_39 PM.png",
+      "images/leatherPotCovers/reddish brown/reddish brown/White and Beige Neutral Clean Women Bags Instagram Post (3).png",
+      "images/leatherPotCovers/reddish brown/reddish brown/White and Beige Neutral Clean Women Bags Instagram Post (4).png",
+      "images/leatherPotCovers/reddish brown/reddish brown/White and Beige Neutral Clean Women Bags Instagram Post (5).png",
+      "images/leatherPotCovers/reddish brown/reddish brown/White and Beige Neutral Clean Women Bags Instagram Post (6).png",
+      "images/leatherPotCovers/reddish brown/reddish brown/White and Beige Neutral Clean Women Bags Instagram Post (7).png",
+      "images/leatherPotCovers/reddish brown/reddish brown/White and Beige Neutral Clean Women Bags Instagram Post (29).png"
+    ],
+    description: "The Reddish Brown Leather Plant Pot Cover brings a warm, clay-like, rust or terracotta feel to your foliage. Designed with spatial proportion in mind, this sleeve coordinates beautifully with dark greens and wooden surfaces.",
+    details: [
+      { label: "Color", value: "Reddish Brown" },
+      { label: "Material", value: "Premium Leather with Water-Resistant Lining" },
+      { label: "Craft", value: "Hand-finished and burnished edges" },
+      { label: "Fits Pots", value: "Standard indoor pots" }
+    ],
+    features: [
+      "Warm reddish brown terracotta tone",
+      "Water-resistant interior protection",
+      "Adds structure and color contrast to plants",
+      "Handcrafted quality"
+    ],
+    careInstructions: "Wipe clean with a soft microfiber cloth. Do not submerge. Use an inner saucer.",
+    whatsappMessage: "Hi! I am interested in the Reddish Brown Leather Plant Pot Cover."
   }
 ];
 
