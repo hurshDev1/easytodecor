@@ -557,6 +557,36 @@
       border-radius: 0 3px 3px 0;
     }
 
+    .variant-swatches {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .variant-swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid var(--gray-mid);
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .variant-swatch:hover {
+      transform: translateY(-2px) scale(1.05);
+      border-color: var(--text-muted);
+    }
+
+    .variant-swatch.active {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 2px var(--gold-pale), 0 4px 10px rgba(201, 168, 76, 0.25);
+      transform: translateY(-2px) scale(1.08);
+    }
+
     .error-msg {
       padding: 100px 1.4rem;
       text-align: center;
@@ -664,11 +694,20 @@
 
     let currentImageIndex = 0;
     let currentProduct = null;
+    let activeVariantIdx = 0;
+
+    function getActiveImages() {
+      if (currentProduct && currentProduct.variants) {
+        return currentProduct.variants[activeVariantIdx].images;
+      }
+      return currentProduct ? currentProduct.images : [];
+    }
 
     function setMainImage(index) {
       if (!currentProduct) return;
       currentImageIndex = index;
-      document.getElementById('main-image').src = currentProduct.images[index];
+      const images = getActiveImages();
+      document.getElementById('main-image').src = images[index];
       document.querySelectorAll('.thumb-grid img').forEach((img, i) => {
         img.classList.toggle('active', i === index);
       });
@@ -676,48 +715,165 @@
 
     function nextImage() {
       if (!currentProduct) return;
-      const newIndex = (currentImageIndex + 1) % currentProduct.images.length;
+      const images = getActiveImages();
+      const newIndex = (currentImageIndex + 1) % images.length;
       setMainImage(newIndex);
     }
 
     function prevImage() {
       if (!currentProduct) return;
-      const newIndex = (currentImageIndex - 1 + currentProduct.images.length) % currentProduct.images.length;
+      const images = getActiveImages();
+      const newIndex = (currentImageIndex - 1 + images.length) % images.length;
       setMainImage(newIndex);
+    }
+
+    function selectVariant(index) {
+      if (!currentProduct || !currentProduct.variants) return;
+      activeVariantIdx = index;
+      const v = currentProduct.variants[index];
+      
+      // Update URL without reload
+      const newUrl = `${window.location.pathname}?id=${currentProduct.id}&variant=${v.id}`;
+      window.history.replaceState({ path: newUrl }, '', newUrl);
+      
+      // Reset image index
+      currentImageIndex = 0;
+      
+      // Fade out transition
+      const pageInfo = document.querySelector('.product-info');
+      const gallery = document.querySelector('.product-gallery');
+      
+      if (pageInfo) pageInfo.style.opacity = 0.5;
+      if (gallery) gallery.style.opacity = 0.5;
+      
+      setTimeout(() => {
+        document.title = `${v.name} — EasytoDecor`;
+        document.querySelector('.product-title').textContent = v.name;
+        document.querySelector('.product-tagline').textContent = v.tagline;
+        document.getElementById('selected-variant-name').textContent = v.color;
+        document.querySelector('.product-price').textContent = v.price;
+        document.querySelector('.product-desc').textContent = v.description;
+        document.querySelector('.care-instructions').textContent = v.careInstructions;
+        
+        // Specs list
+        const detailsHtml = v.details.map(d =>
+          `<li><span class="label">${d.label}</span><span class="value">${d.value}</span></li>`
+        ).join('');
+        document.querySelector('.details-list').innerHTML = detailsHtml;
+        
+        // Features list
+        const featuresHtml = v.features.map(f =>
+          `<li>${f}</li>`
+        ).join('');
+        document.querySelector('.features-list').innerHTML = featuresHtml;
+        
+        // WhatsApp button update
+        const msg = v.whatsappMessage + `\n\nProduct: ${window.location.origin}/product.html?id=${currentProduct.id}&variant=${v.id}`;
+        const buyBtn = document.querySelector('.btn-buy-wa');
+        if (buyBtn) buyBtn.href = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+        
+        // Swatches selection update
+        document.querySelectorAll('.variant-swatch').forEach((swatch, i) => {
+          swatch.classList.toggle('active', i === index);
+        });
+        
+        // Carousel update
+        const thumbsHtml = v.images.map((img, i) =>
+          `<img src="${img}" class="${i === 0 ? 'active' : ''}" onclick="setMainImage(${i})" alt="${v.name} thumbnail">`
+        ).join('');
+        
+        const thumbGrid = document.querySelector('.thumb-grid');
+        if (thumbGrid) {
+          thumbGrid.innerHTML = thumbsHtml;
+          thumbGrid.style.display = v.images.length > 1 ? 'flex' : 'none';
+        }
+        
+        const hasMultiple = v.images.length > 1;
+        document.querySelectorAll('.carousel-btn').forEach(btn => {
+          btn.style.display = hasMultiple ? 'flex' : 'none';
+        });
+        
+        document.getElementById('main-image').src = v.images[0];
+        
+        // Fade in
+        if (pageInfo) {
+          pageInfo.style.transition = 'opacity 0.2s';
+          pageInfo.style.opacity = 1;
+        }
+        if (gallery) {
+          gallery.style.transition = 'opacity 0.2s';
+          gallery.style.opacity = 1;
+        }
+      }, 150);
     }
 
     window.setMainImage = setMainImage;
     window.nextImage = nextImage;
     window.prevImage = prevImage;
+    window.selectVariant = selectVariant;
 
     if (productId) {
       currentProduct = getProductById(productId);
 
       if (currentProduct) {
-        document.title = `${currentProduct.name} — EasytoDecor`;
+        // Determine active variant
+        if (currentProduct.variants) {
+          const varIdFromUrl = getQueryParam('variant') || getQueryParam('v');
+          let foundIdx = -1;
+          
+          if (varIdFromUrl) {
+            foundIdx = currentProduct.variants.findIndex(v => v.id === varIdFromUrl);
+          } else if (productId !== currentProduct.id) {
+            foundIdx = currentProduct.variants.findIndex(v => v.id === productId);
+          }
+          
+          activeVariantIdx = foundIdx !== -1 ? foundIdx : 0;
+        }
 
-        const thumbsHtml = currentProduct.images.map((img, index) =>
-          `<img src="${img}" class="${index === 0 ? 'active' : ''}" onclick="setMainImage(${index})" alt="${currentProduct.name} thumbnail">`
+        const isVariantProduct = !!currentProduct.variants;
+        const activeProdData = isVariantProduct ? currentProduct.variants[activeVariantIdx] : currentProduct;
+
+        document.title = `${activeProdData.name} — EasytoDecor`;
+
+        const thumbsHtml = activeProdData.images.map((img, index) =>
+          `<img src="${img}" class="${index === 0 ? 'active' : ''}" onclick="setMainImage(${index})" alt="${activeProdData.name} thumbnail">`
         ).join('');
 
-        const detailsHtml = currentProduct.details.map(d =>
+        const detailsHtml = activeProdData.details.map(d =>
           `<li><span class="label">${d.label}</span><span class="value">${d.value}</span></li>`
         ).join('');
 
-        const featuresHtml = currentProduct.features.map(f =>
+        const featuresHtml = activeProdData.features.map(f =>
           `<li>${f}</li>`
         ).join('');
 
-        const msg = currentProduct.whatsappMessage + `\n\nProduct: ${window.location.origin}/product.html?id=${currentProduct.id}`;
+        const msg = activeProdData.whatsappMessage + `\n\nProduct: ${window.location.origin}/product.html?id=${currentProduct.id}${isVariantProduct ? `&variant=${activeProdData.id}` : ''}`;
         const waLink = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
 
-        const hasMultipleImages = currentProduct.images.length > 1;
+        const hasMultipleImages = activeProdData.images.length > 1;
+
+        const swatchesHtml = isVariantProduct ? currentProduct.variants.map((v, index) =>
+          `<div class="variant-swatch ${index === activeVariantIdx ? 'active' : ''}" 
+                style="background-color: ${v.colorHex};" 
+                title="${v.color}" 
+                onclick="selectVariant(${index})">
+          </div>`
+        ).join('') : '';
+
+        const variantSelectorHtml = isVariantProduct ? `
+          <div style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+            <h3 class="section-title" style="margin-bottom: 0.5rem; border-bottom: none; padding-bottom: 0;">Color: <span id="selected-variant-name" style="color: var(--gold-dark); text-transform: none; font-weight: 500;">${activeProdData.color}</span></h3>
+            <div class="variant-swatches">
+              ${swatchesHtml}
+            </div>
+          </div>
+        ` : '';
 
         mainContent.innerHTML = `
         <div class="product-page">
           <div class="product-gallery">
             <div class="main-img-container">
-              <img id="main-image" src="${currentProduct.images[0]}" alt="${currentProduct.name}">
+              <img id="main-image" src="${activeProdData.images[0]}" alt="${activeProdData.name}">
               ${hasMultipleImages ? `
                 <button class="carousel-btn prev" onclick="prevImage()"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
                 <button class="carousel-btn next" onclick="nextImage()"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
@@ -732,11 +888,13 @@
             </div>
             
             <div>
-              <h1 class="product-title">${currentProduct.name}</h1>
-              <p class="product-tagline">${currentProduct.tagline}</p>
+              <h1 class="product-title">${activeProdData.name}</h1>
+              <p class="product-tagline">${activeProdData.tagline}</p>
             </div>
             
-            <div class="product-price">${currentProduct.price}</div>
+            ${variantSelectorHtml}
+            
+            <div class="product-price">${activeProdData.price}</div>
             
             <div class="action-row">
               <a href="${waLink}" target="_blank" class="btn-buy-wa">
@@ -746,7 +904,7 @@
             
             <div>
               <h3 class="section-title">Description</h3>
-              <p class="product-desc">${currentProduct.description}</p>
+              <p class="product-desc">${activeProdData.description}</p>
             </div>
             
             <div>
@@ -765,7 +923,7 @@
             
             <div>
               <h3 class="section-title">Care Instructions</h3>
-              <p class="care-instructions">${currentProduct.careInstructions}</p>
+              <p class="care-instructions">${activeProdData.careInstructions}</p>
             </div>
           </div>
         </div>

@@ -818,6 +818,34 @@
       flex-shrink: 0;
     }
 
+    .card-variants {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-variant-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .card-variant-dot:hover {
+      transform: scale(1.2);
+      border-color: var(--text-muted);
+    }
+
+    .card-variant-dot.active {
+      border-color: var(--gold) !important;
+      transform: scale(1.2);
+      box-shadow: 0 0 5px rgba(201, 168, 76, 0.7);
+    }
+
     /* ── TESTIMONIALS ── */
     .testimonials-section {
       padding: 5rem 1.4rem;
@@ -1706,30 +1734,103 @@
       currentCat = cat;
       const list = cat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.category === cat);
       const grid = document.getElementById('products-grid');
-      grid.innerHTML = list.map(p => `
-    <div class="product-card">
-      <a href="product.html?id=${p.id}" style="display:block;text-decoration:none;">
-        <img class="card-img" src="${p.images[0]}" alt="${p.name}" loading="lazy">
+      grid.innerHTML = list.map(p => {
+        const displayProd = p.variants ? p.variants[0] : p;
+        const defaultVariantId = p.variants ? p.variants[0].id : '';
+        const hrefUrl = p.variants ? `product.html?id=${p.id}&variant=${defaultVariantId}` : `product.html?id=${p.id}`;
+
+        return `
+    <div class="product-card" id="card-${p.id}">
+      <a href="${hrefUrl}" class="card-img-link" style="display:block;text-decoration:none;">
+        <img class="card-img" src="${displayProd.images[0]}" alt="${displayProd.name}" loading="lazy">
       </a>
       <span class="card-cat-badge ${p.category === 'resin' ? 'badge-resin' : 'badge-leather'}">${p.category} · ${p.subcategory}</span>
       ${p.badge ? `<span style="position:absolute;top:0.6rem;right:0.6rem;font-size:0.5rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.5rem;border-radius:2px;background:var(--gold);color:var(--navy);font-weight:600;">${p.badge}</span>` : ''}
       <div class="card-body">
-        <div class="card-name">${p.name}</div>
-        <div class="card-desc">${p.tagline}</div>
-        <div class="card-price">From <span>${p.price}</span></div>
+        <div class="card-name">${displayProd.name}</div>
+        <div class="card-desc">${displayProd.tagline}</div>
+        
+        ${p.variants ? `
+          <div class="card-variants">
+            ${p.variants.map((v, idx) => `
+              <span class="card-variant-dot ${idx === 0 ? 'active' : ''}" 
+                    style="background-color: ${v.colorHex};" 
+                    title="${v.color}"
+                    onclick="selectCardVariant(event, '${p.id}', '${v.id}', ${idx}, this)">
+              </span>
+            `).join('')}
+          </div>
+        ` : ''}
+        
+        <div class="card-price">From <span>${displayProd.price}</span></div>
       </div>
       <div class="card-actions">
-        <a class="view-btn" href="product.html?id=${p.id}">View Details</a>
-        <button class="buy-btn" onclick="quickBuy('${p.id}')" title="Order via WhatsApp">${WA_SVG}</button>
+        <a class="view-btn" href="${hrefUrl}">View Details</a>
+        <button class="buy-btn" onclick="quickBuy('${p.id}', '${defaultVariantId}')" title="Order via WhatsApp">${WA_SVG}</button>
       </div>
     </div>
-  `).join('');
+  `;
+      }).join('');
     }
 
-    function quickBuy(id) {
+    function selectCardVariant(event, productId, variantId, variantIndex, element) {
+      event.preventDefault();
+      event.stopPropagation();
+      
+      const p = getProductById(productId);
+      if (!p || !p.variants) return;
+      const v = p.variants[variantIndex];
+      if (!v) return;
+      
+      const card = document.getElementById(`card-${productId}`);
+      if (!card) return;
+      
+      // Update image
+      const img = card.querySelector('.card-img');
+      if (img) img.src = v.images[0];
+      
+      // Update links
+      const newHref = `product.html?id=${productId}&variant=${variantId}`;
+      card.querySelectorAll('.card-img-link, .view-btn').forEach(link => {
+        link.href = newHref;
+      });
+      
+      // Update name
+      const nameEl = card.querySelector('.card-name');
+      if (nameEl) nameEl.textContent = v.name;
+      
+      // Update buy button click handler
+      const buyBtn = card.querySelector('.buy-btn');
+      if (buyBtn) {
+        buyBtn.setAttribute('onclick', `quickBuy('${productId}', '${variantId}')`);
+      }
+      
+      // Update active dot styling
+      card.querySelectorAll('.card-variant-dot').forEach(dot => {
+        dot.classList.remove('active');
+      });
+      element.classList.add('active');
+    }
+
+    function quickBuy(id, variantId) {
       const p = getProductById(id);
       if (!p) return;
-      const msg = p.whatsappMessage + `\n\nProduct: ${window.location.origin}/product.html?id=${p.id}`;
+      
+      let target = p;
+      let linkId = p.id;
+      
+      if (variantId && p.variants) {
+        const found = p.variants.find(v => v.id === variantId);
+        if (found) {
+          target = found;
+          linkId = `${p.id}&variant=${variantId}`;
+        }
+      } else if (p.variants) {
+        target = p.variants[0];
+        linkId = `${p.id}&variant=${target.id}`;
+      }
+      
+      const msg = target.whatsappMessage + `\n\nProduct: ${window.location.origin}/product.html?id=${linkId}`;
       window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
